@@ -10,19 +10,160 @@ namespace Broadway600PM
     {
         static void Main()
         {
-            //InitialCode();
+            string result = "n";
+            do
+            {
 
-            //MathFunctions();
+                //InitialCode();
 
-            //StringFunctions();
+                //MathFunctions();
 
-            SwitchCaseExample();
+                //StringFunctions();
 
+                //SwitchCaseExample();
 
+                //LoopingExamples();
 
+                //ArrayExample();
+
+                //ClassAndObjectExample();
+
+                StudentClassExample();
+
+                Console.WriteLine("Do you want to continue more? (y/n)");
+                result = Console.ReadLine();
+            }
+            while (result.ToLower()[0] == 'y');
             Console.ReadLine();
             
         }
+
+        static void StudentClassExample()
+        {
+            Student s1 = new Student();
+            Student s2 = new Student();
+
+
+            //Student Dharmendra = new Student("Dharmendra", 25);
+            //Student Abash = new Student("Abhash", 27);
+            //Student Dipendra = new Student("Dipendra", 24);
+
+
+            //Console.WriteLine(s1.Age + " "+ s1.Name +" "+ s1.Weight);
+            //s1++;
+            //Console.WriteLine(s1.Age + " "+ s1.Name +" "+ s1.Weight);
+            //s1--;
+            //Console.WriteLine(s1.Age + " "+ s1.Name +" "+ s1.Weight);
+
+           var s = s1 + s2;
+
+            if (s1==s2)
+            {
+                Console.WriteLine("Are equal");
+            }
+            else
+            {
+                Console.WriteLine("Not equal");
+            }
+
+        }
+
+        static void ClassAndObjectExample()
+        {
+            Test m1 = new Test();// instansiate
+            Test t1 = new Test("Dipendra");
+            t1 = new Test("Biraj", 50);
+            t1 = new Test("Abhash");
+
+
+            m1.i = 20; //value set
+            var i = m1.i; //get the value 
+            var name = m1.Name;
+            m1.Name = "Dipendra";
+
+            m1.Name = "";
+
+            var fullname = m1.FullName;
+
+            m1.FirstName = "Biraj";
+            m1.LastName = "Pradhan";
+
+            fullname = m1.FullName;
+
+            var ret=m1.FunctionOne( "Biraj1");
+            ret=m1.FunctionOne( "Biraj1");
+            ret=m1.FunctionOne( "Biraj1");
+            ret=m1.FunctionOne( "Biraj1");
+            ret=m1.FunctionOne( "Biraj1");
+            ret=m1.FunctionOne( "Biraj1");
+            ret=m1.FunctionOne( "Biraj1");
+            ret=m1.FunctionOne( "Biraj1");
+            ret=m1.FunctionOne( "Biraj1");
+
+            Test m2 = new Test();
+            m2.i = 30;
+        }
+
+        static void ArrayExample()
+        {
+            int[] arr = new int[5];
+            
+            arr[0] = 16;
+            arr[1] = 'C'; //implicit casting
+            arr[2] = 17;
+            arr[3] = 18;
+            arr[4] = 15;
+
+            //int[] oldarr = arr;
+            //arr = new int[7];
+            //int looping = oldarr.Length > arr.Length ? arr.Length : oldarr.Length;
+            //for (int i = 0; i < looping; i++)
+            //{
+            //    arr[i] = oldarr[i];
+            //}
+
+            //Array.Reverse(arr);
+            int[] newArr = new int[5];
+            //newArr[0] = arr[1];
+            //newArr[1] = arr[3];
+
+            Array.Copy(arr, newArr, 2); 
+            newArr = new int[5];
+            Array.Copy(arr, newArr, 5);
+            newArr = new int[5]; 
+            Array.Copy(arr,2, newArr,1, 2);
+
+
+            //Array.Resize(ref arr, 2);
+            var i = "biraj";
+            i = (10).ToString();
+
+
+            object k = "saramsh";
+            k = 10;
+
+            object[] objArr = new object[10];
+            objArr[0] = "";
+            objArr[1] = 1;
+
+
+            object arrayobj = objArr;
+        }
+
+        static void LoopingExamples()
+        {
+            string str = "Hello Worlds!";
+            for (int i = 0; i < str.Length; i++)
+            {
+                Console.WriteLine("Character => " + str[i] + " Number => " + i);
+            }
+
+            foreach (var item in str)
+            {
+                Console.WriteLine("Character => " + item);
+            }
+        }
+
 
         static void SwitchCaseExample()
         {
@@ -124,7 +265,7 @@ namespace Broadway600PM
             var baseNum = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Enter the Power");
             var powNum = Convert.ToDouble(Console.ReadLine());
-            var res = Math.Pow(baseNum, powNum);
+            var res = System.Math.Pow(baseNum, powNum);
             Console.WriteLine(res);
         }
 
@@ -163,4 +304,6 @@ namespace Broadway600PM
             var res = i + numInt;
         }
     }
+
+   
 }
