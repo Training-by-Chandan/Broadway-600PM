@@ -114,4 +114,9 @@ namespace Broadway600PM
 
 
     }
+
+    //public class Animal
+    //{
+    //    private int FromPartial = 10;
+    //}
 }

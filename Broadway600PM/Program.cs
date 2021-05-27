@@ -28,7 +28,9 @@ namespace Broadway600PM
 
                 //ClassAndObjectExample();
 
-                StudentClassExample();
+                //StudentClassExample();
+
+                InheritanceExample();
 
                 Console.WriteLine("Do you want to continue more? (y/n)");
                 result = Console.ReadLine();
@@ -36,6 +38,24 @@ namespace Broadway600PM
             while (result.ToLower()[0] == 'y');
             Console.ReadLine();
             
+        }
+
+        static void InheritanceExample()
+        {
+            LivingThing l1 = new LivingThing();
+            //Animal a1 = new Animal(12);
+
+            LivingThing l2 = new Animal();
+
+            l1.FunctionInheritance();
+            l2.FunctionInheritance();
+
+           // Vertibrate v1 = new Vertibrate();
+
+
+            //Console.WriteLine("l1.publicLivingThing => " + l1.publicLivingThing);
+            //Console.WriteLine("a1.publicLivingThing => " + a1.publicLivingThing);
+            //Console.WriteLine("a1.publicAnimal => " + a1.publicAnimal);
         }
 
         static void StudentClassExample()
