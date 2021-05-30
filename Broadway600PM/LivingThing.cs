@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Broadway600PM
 {
-    public class LivingThing
+    public class LivingThing 
     {
         public LivingThing()
         {

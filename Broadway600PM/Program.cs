@@ -8,8 +8,22 @@ namespace Broadway600PM
 {
     class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
+            bool looping = true;
+            if (args.Length!=0)
+            {
+                if (args.Contains("developer"))
+                {
+                    //enable some feature
+                    Console.WriteLine("Developer Mode enabled");
+                }
+
+                if (args.Contains("loopingdisabled"))
+                {
+                    looping = false;
+                }
+            }
             string result = "n";
             do
             {
@@ -30,14 +44,84 @@ namespace Broadway600PM
 
                 //StudentClassExample();
 
-                InheritanceExample();
+                //InheritanceExample();
 
-                Console.WriteLine("Do you want to continue more? (y/n)");
-                result = Console.ReadLine();
+                InterfaceExample();
+
+                if (looping)
+                {
+                    Console.WriteLine("Do you want to continue more? (y/n)");
+                    result = Console.ReadLine();
+                }
             }
-            while (result.ToLower()[0] == 'y');
+            while (result.ToLower()[0] == 'y' && looping);
             Console.ReadLine();
             
+        }
+
+        static IShape s1;
+        static IArea a1;
+        static IPerimeter p1;
+
+        static IShape[] arrayOfShapes=new IShape[10];
+        static void InterfaceExample()
+        {
+            Console.WriteLine("Press");
+            Console.WriteLine("1 for Rectangle");
+            Console.WriteLine("2 for square");
+            Console.WriteLine("3 for circle");
+            var choice = Convert.ToInt32(Console.ReadLine());
+
+            switch (choice)
+            {
+                case 1:
+                    s1 = new Rectangle();
+                    break;
+
+                case 2:
+                    s1 = new Square();
+                    break;
+                case 3:
+                    s1 = new Circle();
+                    break;
+
+                default:
+                    break;
+            }
+
+            s1.GetInput();
+            s1.Perimeter();
+            s1.Area();
+
+
+            //
+            Rectangle r = new Rectangle();
+            r.Length = 20;
+            r.Breadth = 20;
+            r.Area();
+            r.GetInput();
+            r.Perimeter();
+            r.Test();
+
+            s1 = r;
+            
+            s1.GetInput();
+            s1.Area();
+            s1.Perimeter();
+
+
+            a1 = r;
+            a1.Area();
+
+            p1 = r;
+            p1.Perimeter();
+
+            arrayOfShapes[0] = new Rectangle();
+            arrayOfShapes[1] = new Square();
+            arrayOfShapes[0] = new Rectangle();
+            arrayOfShapes[0] = new Circle();
+            arrayOfShapes[0] = new Rectangle();
+           
         }
 
         static void InheritanceExample()
