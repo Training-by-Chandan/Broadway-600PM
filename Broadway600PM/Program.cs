@@ -46,7 +46,10 @@ namespace Broadway600PM
 
                 //InheritanceExample();
 
-                InterfaceExample();
+                //InterfaceExample();
+
+
+                AbstractExample();
 
                 if (looping)
                 {
@@ -58,6 +61,37 @@ namespace Broadway600PM
             Console.ReadLine();
             
         }
+
+        static ShapeAbs sAbs;
+        static void AbstractExample()
+        {
+            Console.WriteLine("Using Abstract Classes");
+            Console.WriteLine("Press");
+            Console.WriteLine("1 for Rectangle");
+            Console.WriteLine("2 for square");
+          
+            var choice = Convert.ToInt32(Console.ReadLine());
+
+            switch (choice)
+            {
+                case 1:
+                    sAbs = new RectangleAbs();
+                    break;
+
+                case 2:
+                    sAbs = new SquareAbs();
+                    break;
+               
+
+                default:
+                    break;
+            }
+
+            sAbs.GetInput();
+            sAbs.Perimeter();
+            sAbs.Area();
+        }
+
 
         static IShape s1;
         static IArea a1;
