@@ -59,4 +59,19 @@ namespace Broadway600PM
         }
 
     }
+
+
+
+    public class TestModel
+    {
+        public TestModel(string Name, string Address)
+        {
+            this.Name = Name;
+            this.Address = Address;
+            
+        }
+
+        public string Name { get; set; }
+        public string Address { get; set; }
+    }
 }

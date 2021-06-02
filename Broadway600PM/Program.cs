@@ -49,7 +49,11 @@ namespace Broadway600PM
                 //InterfaceExample();
 
 
-                AbstractExample();
+                //AbstractExample();
+
+                //CollectionsExample();
+
+                CustomStackImplementation();
 
                 if (looping)
                 {
@@ -60,6 +64,84 @@ namespace Broadway600PM
             while (result.ToLower()[0] == 'y' && looping);
             Console.ReadLine();
             
+        }
+
+        static void CustomStackImplementation()
+        {
+            ShapeTemplate<Rectangle> s = new ShapeTemplate<Rectangle>();
+            ShapeTemplate<string> s1 = new ShapeTemplate<string>();
+
+            Test t = new Test();
+            //t.TemplatedFunction<string, int>("",2);
+            //t.TemplatedFunction<int,double>(1,1.2d);
+
+            CustomStackTemplate<string> c2 = new CustomStackTemplate<string>();
+            c2.Push("");
+            CustomStackTemplate<int> c1 = new CustomStackTemplate<int>(10);
+            c1.Push(10);
+            c1.Push(6);
+            c1.Push(5);
+            c1.Push(4);
+            c1.Push(2);
+            c1.Push(1);
+            c1.Peek();
+            Console.WriteLine("Initial reading");
+            c1.Display();
+
+            c1.Pop();
+            c1.Pop();
+            c1.Pop();
+            c1.Pop();
+            c1.Pop();
+            c1.Pop();
+            Console.WriteLine("After popping");
+            c1.Display();
+            c1.Push(7);
+            Console.WriteLine("After pushing 7");
+
+            c1.Display();
+        }
+
+        static void CollectionsExample()
+        {
+            //List<string> list = new List<string>();
+            //list.Add("Abhash");
+            //list.Add("Ram");
+            //list.Add("Dipendra");
+            //list.Add("Dharmendra");
+            //list.Add("Saramsh");
+            //list.Add("Chandan");
+            //list.Add("Kumar");
+            //list.Add("Hari");
+            //list.Add("Binod");
+            //list.Add("Saroj");
+
+            
+            List<TestModel> listTest = new List<TestModel>();
+            listTest.Add(new TestModel("Abash", "Lalitpur"));
+            listTest.Add(new TestModel("Binod", "Baneshwor"));
+            listTest.Add(new TestModel("Hari", "Kalanki"));
+            listTest.Add(new TestModel("Saramsh", "Dhapakhel"));
+            listTest.Add(new TestModel("Dipendra", "Bhaktapur"));
+            listTest.Add(new TestModel("Dharmendra", "Damak"));
+            listTest.Add(new TestModel("Saroj", "Mahendranagar"));
+            listTest.Add(new TestModel("Aakash", "Biratnagar"));
+            listTest.Add(new TestModel("Nawanit", "Itahari"));
+            listTest.Add(new TestModel("Kumar", "Maharajgunj"));
+            listTest.Add(new TestModel("Biraj", "Budhanilkantha"));
+
+            //linq query 
+            var len = (from abhash in listTest where abhash.Name.ToUpper().StartsWith("S") orderby abhash.Address 
+                   select abhash).ToList();
+
+            //linq lambda expression
+            //var len = listTest.Where(p=>p.Name.ToUpper().StartsWith("S") ).OrderBy(abhash => abhash.Address).ToList();
+
+            foreach (var item in len)
+            {
+                Console.WriteLine(item.Name +" lives in  "+ item.Address);
+            }
+
         }
 
         static ShapeAbs sAbs;

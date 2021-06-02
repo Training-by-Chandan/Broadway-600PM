@@ -113,6 +113,14 @@ namespace Broadway600PM
         }
 
 
+
+        public void TemplatedFunction<T1,T2,T3,T4,T5>(T1 x, T2 y)
+        {
+            Console.WriteLine("Type of T1 = " + typeof(T1));
+            Console.WriteLine("Type of T2 = " + typeof(T2));
+        }
+
+
     }
 
     //public class Animal

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomStack.cs" />
     <Compile Include="IShape.cs" />
     <Compile Include="LivingThing.cs" />
     <Compile Include="ShapeAbs.cs" />
