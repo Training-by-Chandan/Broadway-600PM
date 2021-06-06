@@ -53,7 +53,12 @@ namespace Broadway600PM
 
                 //CollectionsExample();
 
-                CustomStackImplementation();
+                //CustomStackImplementation();
+
+                //StaticAndNonStaticExample();
+
+                //PassByExample();
+                ExceptionExamples();
 
                 if (looping)
                 {
@@ -63,6 +68,69 @@ namespace Broadway600PM
             }
             while (result.ToLower()[0] == 'y' && looping);
             Console.ReadLine();
+            
+        }
+
+        static void ExceptionNew()
+        {
+            Exceptions ex = new Exceptions();
+            //ex.FunctionOne(2);
+            ex.ex.SetValue(101);
+        }
+
+        static void ExceptionExamples()
+        {
+            try
+            {
+
+                Subject s1 = new Subject();
+                s1.SetMarks(10);
+                s1.SetMarks(1);
+            }
+            catch(GreaterThanFullMarksException ex)
+            {
+                Console.WriteLine("Not valid");
+                Console.WriteLine(ex.StackTrace);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.WriteLine("I am from finally block");
+            }
+            
+        }
+
+
+        static void PassByExample()
+        {
+            int a = 10;
+            int b = 20;
+            PassBy.AddByValue(a, b); //Add(10,20)
+
+            Console.WriteLine($"a=>{a} b=>{b}");
+            PassBy.AddByReference(ref a, b);
+            Console.WriteLine($"a=>{a} b=>{b}");
+
+
+            int OutVal = 0;
+            PassBy.AddByOut(a, b, out OutVal);
+            Console.WriteLine($"OutVal = {OutVal}");
+        }
+
+        static void StaticAndNonStaticExample()
+        {
+            NonStaticClass c1 = new NonStaticClass();
+           
+            c1.FunctionOne();
+            NonStaticClass c2 = new NonStaticClass();
+            c2.FunctionOne();
+            NonStaticClass c3 = new NonStaticClass();
+            c3.FunctionOne();
+            NonStaticClass c4 = new NonStaticClass();
+            c4.FunctionOne();
             
         }
 

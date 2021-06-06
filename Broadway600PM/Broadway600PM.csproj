@@ -47,9 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomStack.cs" />
+    <Compile Include="Exceptions.cs" />
     <Compile Include="IShape.cs" />
     <Compile Include="LivingThing.cs" />
     <Compile Include="ShapeAbs.cs" />
+    <Compile Include="StaticClass.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
