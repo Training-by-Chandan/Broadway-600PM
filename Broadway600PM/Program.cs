@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Broadway600PM
@@ -58,7 +59,19 @@ namespace Broadway600PM
                 //StaticAndNonStaticExample();
 
                 //PassByExample();
-                ExceptionExamples();
+                //ExceptionExamples();
+
+                //DelegateImplementation();
+
+                //DelegateImplementationSecond();
+
+                //DelegateImplementationMultiCast();
+
+                //EventHandlerExample();
+
+                //ThreadingExample();
+
+                TaskExample();
 
                 if (looping)
                 {
@@ -70,6 +83,177 @@ namespace Broadway600PM
             Console.ReadLine();
             
         }
+
+        static void TaskExample()
+        {
+            Task<int> t1 = new Task<int>(FuncOne);
+            Task<string> t2 = new Task<string>(FuncTwo);
+
+            t1.Start();
+            t2.Start();
+            Task t3 = new Task(() => {
+                Console.WriteLine(t1.Result);
+            });
+
+            Task t4 = new Task(() => {
+                Console.WriteLine(t2.Result);
+            });
+            t3.Start();
+            t4.Start();
+
+        }
+
+        static void ThreadingExample()
+        {
+            //Thread t1=new Thread(FuncOne);
+            //Thread t2 = new Thread(FuncTwo);
+            //t1.Start();
+            //t2.Start();
+        }
+
+        static int FuncOne()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("t1 => " + i+ " "+DateTime.Now.Second);
+                Thread.Sleep(1000);
+                //Task.Delay(1000);
+            }
+
+            return 0;
+        }
+        static string FuncTwo()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("t2 => " + i + " " + DateTime.Now.Second);
+                Thread.Sleep(2000);
+            }
+
+            return "function ended";
+        }
+
+
+        static void EventHandlerExample()
+        { 
+            Test t=new Test();
+            Deleg d = new Deleg();
+            d.OperationHandler += Program.Add;
+            d.OperationHandler += t.TestFunction;
+            d.Run(5,7);
+            d.OperationHandler -= t.TestFunction;
+            d.Run(5, 7);
+
+        }
+
+
+        //realistic example of creating a custom button control over the
+        public delegate double Operation(double x, double y);
+        public static double Add(double a, double b)
+        {
+            Console.WriteLine(a + b);
+            return a + b;
+        }
+        public static double Subtract(double a, double b)
+        {
+            Console.WriteLine(a - b);
+
+            return a - b;
+        }
+
+        public static double Multiple(double a, double b)
+        {
+            Console.WriteLine(a * b);
+
+            return a * b;
+        }
+
+        public static double Divide(double a, double b)
+        {
+            Console.WriteLine(a / b);
+
+            return a / b;
+        }
+
+        static void DelegateImplementationMultiCast()
+        {
+
+            Operation o = Program.Add;
+            o += Program.Subtract;
+            o += Program.Multiple;
+            o += Program.Divide;
+
+            Console.WriteLine("Enter First Number");
+            var first = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Enter Second Number");
+            var second = Convert.ToDouble(Console.ReadLine());
+
+            var res = o(first, second);
+            //Console.WriteLine(res);
+        }
+        static void DelegateImplementationSecond()
+        {
+            Operation[] o = new Operation[4];
+            o[0] = new Operation(Program.Add);
+            o[1] = new Operation(Program.Subtract);
+            o[2] = new Operation(Program.Multiple);
+            o[3] = new Operation(Program.Divide);
+            Console.WriteLine("Enter First Number");
+            var first = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Enter Second Number");
+            var second = Convert.ToDouble(Console.ReadLine());
+
+            foreach (var item in o)
+            {
+                Console.WriteLine("Result is => " + item(first, second));
+            }
+
+           
+
+          
+
+        }
+
+        static void DelegateImplementation()
+        {
+            Operation o = new Operation(Program.Add);
+            Console.WriteLine("Enter First Number");
+            var first = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Enter Second Number");
+            var second = Convert.ToDouble(Console.ReadLine());
+
+
+
+            Console.WriteLine("Press");
+            Console.WriteLine("1 for Add");
+            Console.WriteLine("2 for subtract");
+            Console.WriteLine("3 for multiply");
+            Console.WriteLine("4 for divide");
+
+            var choice = Convert.ToInt32(Console.ReadLine());
+
+            switch (choice)
+            {
+                case 1:
+                    o = new Operation(Program.Add);
+                    break;
+                case 2:
+                    o = new Operation(Program.Subtract);
+                    break;
+                case 3:
+                    o = new Operation(Program.Multiple);
+                    break;
+                case 4:
+                    o = new Operation(Program.Divide);
+                    break;
+                default:
+                    break;
+            }
+
+            Console.WriteLine("Result is => " + o(first, second));
+
+        }
+
 
         static void ExceptionNew()
         {

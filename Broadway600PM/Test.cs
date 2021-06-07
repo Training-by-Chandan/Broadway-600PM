@@ -120,6 +120,11 @@ namespace Broadway600PM
             Console.WriteLine("Type of T2 = " + typeof(T2));
         }
 
+        public double TestFunction(double a, double b)
+        {
+            Console.WriteLine("The function is ruuning from test class");
+            return 0;
+        }
 
     }
 
