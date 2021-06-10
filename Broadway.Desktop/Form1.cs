@@ -31,7 +31,8 @@ namespace Broadway.Desktop
 
         private void Form1_Load(object sender, EventArgs e)
         {
-          
+            //todo iplement this function
+            timer1.Start();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -72,6 +73,32 @@ namespace Broadway.Desktop
                 button2.Text = "To Upper";
             }
             isLower = !isLower;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var result=openFileDialog1.ShowDialog();
+            if (result== DialogResult.Yes || result ==DialogResult.OK)
+            {
+                var filename = openFileDialog1.FileName;
+
+                var fileContent = System.IO.File.ReadAllText(filename);
+
+                richTextBox1.AppendText(fileContent);
+                richTextBox1.Paste();
+            }
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            WebBrowser wb = new WebBrowser();
+            wb.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblText.Text = DateTime.Now.ToString("hh:mm:ss");
         }
     }
 }
