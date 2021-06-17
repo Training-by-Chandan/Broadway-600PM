@@ -32,10 +32,10 @@ namespace Broadway.Desktop
             {
                 con.Open();
                 var result = cmd.ExecuteReader();
-                List<Student> list = new List<Student>();
+                List<Students> list = new List<Students>();
                 while (result.Read())
                 {
-                    var student = new Student();
+                    var student = new Students();
                     student.Id = result.GetFieldValue<int>(0);
                     student.Name = result.GetFieldValue<string>(1);
                     list.Add(student);
@@ -129,7 +129,7 @@ namespace Broadway.Desktop
         }
     }
 
-    public class Student
+    public class Students
     {
         public int Id { get; set; }
         public string Name { get; set; }

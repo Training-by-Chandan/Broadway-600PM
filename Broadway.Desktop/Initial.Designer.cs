@@ -78,9 +78,9 @@ namespace Broadway.Desktop
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(687, 151);
+            this.btnUpdate.Location = new System.Drawing.Point(811, 61);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(130, 59);
+            this.btnUpdate.Size = new System.Drawing.Size(192, 59);
             this.btnUpdate.TabIndex = 4;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;

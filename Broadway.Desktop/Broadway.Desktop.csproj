@@ -64,9 +64,18 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -79,16 +88,55 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Db\Data.cs" />
+    <Compile Include="EF\BWModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BWModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\BWModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\BWModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BWModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Parent.cs">
+      <DependentUpon>BWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Student.cs">
+      <DependentUpon>BWModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\StudentParent.cs">
+      <DependentUpon>BWModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Initial.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Initial.Designer.cs">
       <DependentUpon>Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="InitialV2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InitialV2.Designer.cs">
+      <DependentUpon>InitialV2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentEF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentEF.Designer.cs">
+      <DependentUpon>StudentEF.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Initial.resx">
       <DependentUpon>Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InitialV2.resx">
+      <DependentUpon>InitialV2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -99,7 +147,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="StudentEF.resx">
+      <DependentUpon>StudentEF.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Broadway.Desktop_TemporaryKey.pfx" />
+    <EntityDeploy Include="EF\BWModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BWModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EF\BWModel.edmx.diagram">
+      <DependentUpon>BWModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -135,6 +194,21 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EF\BWModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BWModel.Context.cs</LastGenOutput>
+      <DependentUpon>BWModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="EF\BWModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BWModel.edmx</DependentUpon>
+      <LastGenOutput>BWModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
