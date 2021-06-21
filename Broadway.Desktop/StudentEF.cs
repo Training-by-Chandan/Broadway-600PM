@@ -19,7 +19,7 @@ namespace Broadway.Desktop
         {
             InitializeComponent();
             loaddata();
-            loadlabel();
+            // loadlabel();
         }
 
         private void loadlabel()
@@ -32,6 +32,9 @@ namespace Broadway.Desktop
         {
             dataGridView1.DataSource = db.Students.ToList();
             dataGridView1.Refresh();
+
+            GridStudentParent.DataSource = db.vw_studentparent.ToList();
+            GridStudentParent.Refresh();
         }
 
         private void insertData()
@@ -53,6 +56,18 @@ namespace Broadway.Desktop
         private void btnCreate_Click(object sender, EventArgs e)
         {
             insertData();
+        }
+
+        private void ButtonCreate_Click(object sender, EventArgs e)
+        {
+            db.sp_studentParent(TextStudent.Text, TextFather.Text, TextMother.Text);
+            db.SaveChanges();
+
+            loaddata();
+
+            TextStudent.Text = string.Empty;
+            TextFather.Text = string.Empty;
+            TextMother.Text = string.Empty;
         }
     }
 }

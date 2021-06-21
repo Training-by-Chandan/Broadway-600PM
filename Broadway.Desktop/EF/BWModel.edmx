@@ -28,6 +28,20 @@
           <Property Name="ParentId" Type="int" Nullable="false" />
           <Property Name="StudentId" Type="int" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BW_6PM.dbo.vw_studentparent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_studentparent">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="StudentName" />
+            <PropertyRef Name="FatherName" />
+            <PropertyRef Name="MotherName" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="StudentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FatherName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MotherName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <Association Name="Parent_key">
           <End Role="Parent" Type="Self.Parent" Multiplicity="1" />
           <End Role="StudentParent" Type="Self.StudentParent" Multiplicity="*" />
@@ -52,10 +66,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_studentParent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="student" Type="nvarchar" Mode="In" />
+          <Parameter Name="father" Type="nvarchar" Mode="In" />
+          <Parameter Name="mother" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="BWModelStoreContainer">
           <EntitySet Name="Parent" EntityType="Self.Parent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentParent" EntityType="Self.StudentParent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_studentparent" EntityType="Self.vw_studentparent" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_studentparent].[Id] AS [Id], 
+    [vw_studentparent].[StudentName] AS [StudentName], 
+    [vw_studentparent].[FatherName] AS [FatherName], 
+    [vw_studentparent].[MotherName] AS [MotherName]
+    FROM [dbo].[vw_studentparent] AS [vw_studentparent]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="Parent_key" Association="Self.Parent_key">
             <End Role="Parent" EntitySet="Parent" />
             <End Role="StudentParent" EntitySet="StudentParent" />
@@ -98,6 +126,13 @@
             <End Role="Student" EntitySet="Students" />
             <End Role="StudentParent" EntitySet="StudentParents" />
           </AssociationSet>
+          <EntitySet Name="vw_studentparent" EntityType="BWModel.vw_studentparent" />
+          <FunctionImport Name="sp_studentParent">
+            <Parameter Name="student" Mode="In" Type="String" />
+            <Parameter Name="father" Mode="In" Type="String" />
+            <Parameter Name="mother" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetStudents" />
         </EntityContainer>
         <EntityType Name="StudentParent">
           <Key>
@@ -133,6 +168,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="vw_studentparent">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="StudentName" />
+            <PropertyRef Name="FatherName" />
+            <PropertyRef Name="MotherName" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="StudentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FatherName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MotherName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -165,6 +212,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="vw_studentparent">
+            <EntityTypeMapping TypeName="BWModel.vw_studentparent">
+              <MappingFragment StoreEntitySet="vw_studentparent">
+                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_studentParent" FunctionName="BWModel.Store.sp_studentParent" />
+          <FunctionImportMapping FunctionImportName="GetStudents" FunctionName="BWModel.Store.GetStudents" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

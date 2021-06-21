@@ -12,6 +12,8 @@ namespace Broadway.Desktop.EF
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class BWEntities : DbContext
     {
@@ -28,5 +30,28 @@ namespace Broadway.Desktop.EF
         public virtual DbSet<Parent> Parents { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<StudentParent> StudentParents { get; set; }
+        public virtual DbSet<vw_studentparent> vw_studentparent { get; set; }
+    
+        public virtual int sp_studentParent(string student, string father, string mother)
+        {
+            var studentParameter = student != null ?
+                new ObjectParameter("student", student) :
+                new ObjectParameter("student", typeof(string));
+    
+            var fatherParameter = father != null ?
+                new ObjectParameter("father", father) :
+                new ObjectParameter("father", typeof(string));
+    
+            var motherParameter = mother != null ?
+                new ObjectParameter("mother", mother) :
+                new ObjectParameter("mother", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_studentParent", studentParameter, fatherParameter, motherParameter);
+        }
+    
+        public virtual int GetStudents()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetStudents");
+        }
     }
 }

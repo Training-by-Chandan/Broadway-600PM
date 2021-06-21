@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Broadway.Desktop", "Broadwa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School.Web", "School.Web\School.Web.csproj", "{44DF37F8-611A-46ED-8798-9D4D3EBA2C43}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Broadway.CodeFirst", "Broadway.CodeFirst\Broadway.CodeFirst.csproj", "{4E5AC3DF-82A5-4B52-9332-17D482CB320B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{44DF37F8-611A-46ED-8798-9D4D3EBA2C43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44DF37F8-611A-46ED-8798-9D4D3EBA2C43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44DF37F8-611A-46ED-8798-9D4D3EBA2C43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E5AC3DF-82A5-4B52-9332-17D482CB320B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E5AC3DF-82A5-4B52-9332-17D482CB320B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E5AC3DF-82A5-4B52-9332-17D482CB320B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E5AC3DF-82A5-4B52-9332-17D482CB320B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
