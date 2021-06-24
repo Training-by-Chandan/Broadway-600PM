@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Broadway.CodeFirst.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -15,12 +16,146 @@ namespace Broadway.CodeFirst
     {
         public string SchoolName = ConfigurationManager.AppSettings["SchoolName"];
 
+        private DefaultContext db = new DefaultContext();
+
         public Form1()
         {
             InitializeComponent();
             this.Text = "Welcome to " + SchoolName;
+            GridStudent.MouseClick += GridStudent_MouseDoubleClick;
         }
 
-        
+        private void GridStudent_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var selected = GridStudent.SelectedRows;
+            if (selected != null && selected.Count > 0)
+            {
+                //data populate gare
+                var row = selected[0];
+                TextName.Text = row.Cells["Name"].Value.ToString();
+                TextAddress.Text = row.Cells["Address"].Value.ToString();
+                TextEmail.Text = row.Cells["Email"].Value.ToString();
+                LabelId.Text = row.Cells["Id"].Value.ToString();
+
+                ButtonCreate.Visible = false;
+                ButtonEdit.Visible = true;
+                ButtonDelete.Visible = true;
+            }
+            else
+            {
+                Reset();
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            GridStudent.DataSource = db.Student.ToList();
+            GridStudent.Refresh();
+        }
+
+        private void Insert()
+        {
+            if (Valid())
+            {
+                var student = new Model.Student()
+                {
+                    Name = TextName.Text,
+                    Address = TextAddress.Text,
+                    Email = TextEmail.Text
+                };
+
+                db.Student.Add(student);
+                db.SaveChanges();
+
+                Reset();
+                LoadData();
+            }
+            else
+            {
+                MessageBox.Show(" Some fields are empty, please check the entries");
+            }
+        }
+
+        private void Reset()
+        {
+            TextName.Text = string.Empty;
+            TextAddress.Text = string.Empty;
+            TextEmail.Text = string.Empty;
+            LabelId.Text = string.Empty;
+
+            ButtonCreate.Visible = true;
+            ButtonEdit.Visible = false;
+            ButtonDelete.Visible = false;
+        }
+
+        private bool Valid()
+        {
+            var res = false;
+            if (!string.IsNullOrWhiteSpace(TextName.Text) && !string.IsNullOrWhiteSpace(TextEmail.Text))
+            {
+                res = true;
+            }
+
+            return res;
+        }
+
+        private void ButtonCreate_Click(object sender, EventArgs e)
+        {
+            Insert();
+        }
+
+        private void Edit()
+        {
+            var existingStudent = db.Student.Find(Convert.ToInt32(LabelId.Text));
+            if (existingStudent != null && Valid())
+            {
+                existingStudent.Name = TextName.Text;
+                existingStudent.Address = TextAddress.Text;
+                existingStudent.Email = TextEmail.Text;
+
+                db.Entry(existingStudent).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+
+                Reset();
+                LoadData();
+            }
+            else
+            {
+                MessageBox.Show("Some Error occured");
+            }
+        }
+
+        private void Delete()
+        {
+            var result = MessageBox.Show("Are you sure you want to delete this?", "Warning!", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                var existingStudent = db.Student.Find(Convert.ToInt32(LabelId.Text));
+                if (existingStudent != null)
+                {
+                    db.Student.Remove(existingStudent);
+                    db.SaveChanges();
+
+                    Reset();
+                    LoadData();
+                }
+            }
+        }
+
+        private void ButtonEdit_Click(object sender, EventArgs e)
+        {
+            Edit();
+        }
+
+        private void ButtonDelete_Click(object sender, EventArgs e)
+        {
+            Delete();
+        }
     }
 }

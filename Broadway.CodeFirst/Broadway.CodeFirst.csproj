@@ -81,6 +81,9 @@
     <Compile Include="Model\Teacher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106211321360_sudentTabe.resx">
       <DependentUpon>202106211321360_sudentTabe.cs</DependentUpon>
     </EmbeddedResource>
