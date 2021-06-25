@@ -16,5 +16,6 @@ namespace Broadway.CodeFirst.Data
 
         public DbSet<Student> Student { get; set; }
         public DbSet<Teacher> Teacher { get; set; }
+        public DbSet<Classes> Classes { get; set; }
     }
 }

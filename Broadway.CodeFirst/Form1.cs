@@ -56,6 +56,8 @@ namespace Broadway.CodeFirst
         {
             GridStudent.DataSource = db.Student.ToList();
             GridStudent.Refresh();
+
+            LoadClass();
         }
 
         private void Insert()
@@ -66,7 +68,8 @@ namespace Broadway.CodeFirst
                 {
                     Name = TextName.Text,
                     Address = TextAddress.Text,
-                    Email = TextEmail.Text
+                    Email = TextEmail.Text,
+                    ClassId = Convert.ToInt32(((KeyValuePair<string, string>)BoxClass.SelectedItem).Key)
                 };
 
                 db.Student.Add(student);
@@ -117,6 +120,7 @@ namespace Broadway.CodeFirst
                 existingStudent.Name = TextName.Text;
                 existingStudent.Address = TextAddress.Text;
                 existingStudent.Email = TextEmail.Text;
+                existingStudent.ClassId = Convert.ToInt32(((KeyValuePair<string, string>)BoxClass.SelectedItem).Key);
 
                 db.Entry(existingStudent).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
@@ -156,6 +160,20 @@ namespace Broadway.CodeFirst
         private void ButtonDelete_Click(object sender, EventArgs e)
         {
             Delete();
+        }
+
+        private void manageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void LoadClass()
+        {
+            var data = db.Classes.ToDictionary(p => p.Id.ToString(), p => p.Name);
+
+            BoxClass.DataSource = new BindingSource(data, null);
+            BoxClass.DisplayMember = "Value";
+            BoxClass.ValueMember = "Key";
         }
     }
 }

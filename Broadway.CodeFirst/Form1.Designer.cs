@@ -30,6 +30,7 @@ namespace Broadway.CodeFirst
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ButtonDelete = new System.Windows.Forms.Button();
             this.LabelId = new System.Windows.Forms.Label();
             this.ButtonCreate = new System.Windows.Forms.Button();
             this.TextEmail = new System.Windows.Forms.TextBox();
@@ -38,15 +39,18 @@ namespace Broadway.CodeFirst
             this.label2 = new System.Windows.Forms.Label();
             this.TextName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.GridStudent = new System.Windows.Forms.DataGridView();
-            this.ButtonDelete = new System.Windows.Forms.Button();
             this.ButtonEdit = new System.Windows.Forms.Button();
+            this.GridStudent = new System.Windows.Forms.DataGridView();
+            this.BoxClass = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridStudent)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.BoxClass);
             this.groupBox1.Controls.Add(this.ButtonDelete);
             this.groupBox1.Controls.Add(this.LabelId);
             this.groupBox1.Controls.Add(this.ButtonCreate);
@@ -63,6 +67,17 @@ namespace Broadway.CodeFirst
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Student";
+            // 
+            // ButtonDelete
+            // 
+            this.ButtonDelete.Location = new System.Drawing.Point(683, 99);
+            this.ButtonDelete.Name = "ButtonDelete";
+            this.ButtonDelete.Size = new System.Drawing.Size(130, 43);
+            this.ButtonDelete.TabIndex = 8;
+            this.ButtonDelete.Text = "Delete";
+            this.ButtonDelete.UseVisualStyleBackColor = true;
+            this.ButtonDelete.Visible = false;
+            this.ButtonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
             // 
             // LabelId
             // 
@@ -131,27 +146,6 @@ namespace Broadway.CodeFirst
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
             // 
-            // GridStudent
-            // 
-            this.GridStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridStudent.Location = new System.Drawing.Point(26, 273);
-            this.GridStudent.Name = "GridStudent";
-            this.GridStudent.RowHeadersWidth = 51;
-            this.GridStudent.RowTemplate.Height = 24;
-            this.GridStudent.Size = new System.Drawing.Size(982, 281);
-            this.GridStudent.TabIndex = 1;
-            // 
-            // ButtonDelete
-            // 
-            this.ButtonDelete.Location = new System.Drawing.Point(683, 99);
-            this.ButtonDelete.Name = "ButtonDelete";
-            this.ButtonDelete.Size = new System.Drawing.Size(130, 43);
-            this.ButtonDelete.TabIndex = 8;
-            this.ButtonDelete.Text = "Delete";
-            this.ButtonDelete.UseVisualStyleBackColor = true;
-            this.ButtonDelete.Visible = false;
-            this.ButtonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
-            // 
             // ButtonEdit
             // 
             this.ButtonEdit.Location = new System.Drawing.Point(831, 99);
@@ -163,6 +157,33 @@ namespace Broadway.CodeFirst
             this.ButtonEdit.Visible = false;
             this.ButtonEdit.Click += new System.EventHandler(this.ButtonEdit_Click);
             // 
+            // GridStudent
+            // 
+            this.GridStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridStudent.Location = new System.Drawing.Point(26, 278);
+            this.GridStudent.Name = "GridStudent";
+            this.GridStudent.RowHeadersWidth = 51;
+            this.GridStudent.RowTemplate.Height = 24;
+            this.GridStudent.Size = new System.Drawing.Size(982, 281);
+            this.GridStudent.TabIndex = 1;
+            // 
+            // BoxClass
+            // 
+            this.BoxClass.FormattingEnabled = true;
+            this.BoxClass.Location = new System.Drawing.Point(122, 82);
+            this.BoxClass.Name = "BoxClass";
+            this.BoxClass.Size = new System.Drawing.Size(185, 24);
+            this.BoxClass.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(26, 85);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(42, 17);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Class";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -170,6 +191,7 @@ namespace Broadway.CodeFirst
             this.ClientSize = new System.Drawing.Size(1040, 595);
             this.Controls.Add(this.GridStudent);
             this.Controls.Add(this.groupBox1);
+            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -194,6 +216,8 @@ namespace Broadway.CodeFirst
         private System.Windows.Forms.Label LabelId;
         private System.Windows.Forms.Button ButtonEdit;
         private System.Windows.Forms.Button ButtonDelete;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox BoxClass;
     }
 }
 

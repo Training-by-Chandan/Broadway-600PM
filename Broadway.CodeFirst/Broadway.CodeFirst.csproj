@@ -57,12 +57,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClassForm.Designer.cs">
+      <DependentUpon>ClassForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\DefaultContext.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202106211321360_sudentTabe.cs" />
     <Compile Include="Migrations\202106211321360_sudentTabe.designer.cs">
@@ -76,13 +88,27 @@
     <Compile Include="Migrations\202106211326063_teacherTable.designer.cs">
       <DependentUpon>202106211326063_teacherTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106251255002_ClassAndStudent.cs" />
+    <Compile Include="Migrations\202106251255002_ClassAndStudent.designer.cs">
+      <DependentUpon>202106251255002_ClassAndStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106251333453_classTeacher.cs" />
+    <Compile Include="Migrations\202106251333453_classTeacher.designer.cs">
+      <DependentUpon>202106251333453_classTeacher.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Student.cs" />
     <Compile Include="Model\Teacher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ClassForm.resx">
+      <DependentUpon>ClassForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106211321360_sudentTabe.resx">
       <DependentUpon>202106211321360_sudentTabe.cs</DependentUpon>
@@ -92,6 +118,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106211326063_teacherTable.resx">
       <DependentUpon>202106211326063_teacherTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106251255002_ClassAndStudent.resx">
+      <DependentUpon>202106251255002_ClassAndStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106251333453_classTeacher.resx">
+      <DependentUpon>202106251333453_classTeacher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
