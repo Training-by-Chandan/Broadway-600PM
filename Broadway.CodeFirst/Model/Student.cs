@@ -29,6 +29,8 @@ namespace Broadway.CodeFirst.Model
         public string Name { get; set; }
         public string Code { get; set; }
 
-        public ICollection<Student> Students { get; set; } //
+        public virtual ICollection<Student> Students { get; set; } //
+
+        public virtual ICollection<Teacher> ClassTeacher { get; set; }
     }
 }

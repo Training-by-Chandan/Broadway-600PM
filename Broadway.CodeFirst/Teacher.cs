@@ -12,36 +12,34 @@ using System.Windows.Forms;
 
 namespace Broadway.CodeFirst
 {
-    public partial class Form1 : Form
+    public partial class Teacher : Form
     {
+        public Teacher()
+        {
+            InitializeComponent();
+            this.Text = "Welcome to " + SchoolName;
+            dataGridView1.MouseClick += GridStudent_MouseDoubleClick;
+            ButtonCreate.Click += ButtonCreate_Click;
+            ButtonDelete.Click += ButtonDelete_Click;
+            ButtonEdit.Click += ButtonEdit_Click;
+        }
+
         public string SchoolName = ConfigurationManager.AppSettings["SchoolName"];
 
         private DefaultContext db = new DefaultContext();
 
-        public Form1()
-        {
-            InitializeComponent();
-            this.Text = "Welcome to " + SchoolName;
-            GridStudent.MouseClick += GridStudent_MouseDoubleClick;
-        }
-
         private void GridStudent_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            var selected = GridStudent.SelectedRows;
+            var selected = dataGridView1.SelectedRows;
             if (selected != null && selected.Count > 0)
             {
                 //data populate gare
                 var row = selected[0];
                 TextName.Text = row.Cells["Name"].Value.ToString();
-                TextAddress.Text = row.Cells["Address"].Value.ToString();
+
                 TextEmail.Text = row.Cells["Email"].Value.ToString();
-
                 LabelId.Text = row.Cells["Id"].Value.ToString();
-                var student = db.Student.FirstOrDefault(p => p.Id.ToString() == LabelId.Text);
 
-                var classteacher = student.Classes.ClassTeacher == null ? "" : student.Classes.ClassTeacher.FirstOrDefault().Name;
-                LabelClassTeacher.Text = $"Class Teacher: {classteacher}";
-                LabelClassTeacher.Visible = true;
                 ButtonCreate.Visible = false;
                 ButtonEdit.Visible = true;
                 ButtonDelete.Visible = true;
@@ -54,13 +52,12 @@ namespace Broadway.CodeFirst
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoadData();
         }
 
         private void LoadData()
         {
-            GridStudent.DataSource = db.Student.ToList();
-            GridStudent.Refresh();
+            dataGridView1.DataSource = db.Teachers.ToList();
+            dataGridView1.Refresh();
 
             LoadClass();
         }
@@ -69,15 +66,15 @@ namespace Broadway.CodeFirst
         {
             if (Valid())
             {
-                var student = new Model.Student()
+                var teacher = new Model.Teacher()
                 {
                     Name = TextName.Text,
-                    Address = TextAddress.Text,
+
                     Email = TextEmail.Text,
                     ClassId = Convert.ToInt32(((KeyValuePair<string, string>)BoxClass.SelectedItem).Key)
                 };
 
-                db.Student.Add(student);
+                db.Teachers.Add(teacher);
                 db.SaveChanges();
 
                 Reset();
@@ -92,10 +89,9 @@ namespace Broadway.CodeFirst
         private void Reset()
         {
             TextName.Text = string.Empty;
-            TextAddress.Text = string.Empty;
+
             TextEmail.Text = string.Empty;
             LabelId.Text = string.Empty;
-            LabelClassTeacher.Text = string.Empty;
 
             ButtonCreate.Visible = true;
             ButtonEdit.Visible = false;
@@ -120,15 +116,15 @@ namespace Broadway.CodeFirst
 
         private void Edit()
         {
-            var existingStudent = db.Student.Find(Convert.ToInt32(LabelId.Text));
-            if (existingStudent != null && Valid())
+            var existingTeacher = db.Teachers.Find(Convert.ToInt32(LabelId.Text));
+            if (existingTeacher != null && Valid())
             {
-                existingStudent.Name = TextName.Text;
-                existingStudent.Address = TextAddress.Text;
-                existingStudent.Email = TextEmail.Text;
-                existingStudent.ClassId = Convert.ToInt32(((KeyValuePair<string, string>)BoxClass.SelectedItem).Key);
+                existingTeacher.Name = TextName.Text;
 
-                db.Entry(existingStudent).State = System.Data.Entity.EntityState.Modified;
+                existingTeacher.Email = TextEmail.Text;
+                existingTeacher.ClassId = Convert.ToInt32(((KeyValuePair<string, string>)BoxClass.SelectedItem).Key);
+
+                db.Entry(existingTeacher).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
 
                 Reset();
@@ -146,10 +142,10 @@ namespace Broadway.CodeFirst
 
             if (result == DialogResult.Yes)
             {
-                var existingStudent = db.Student.Find(Convert.ToInt32(LabelId.Text));
-                if (existingStudent != null)
+                var existingTeacher = db.Teachers.Find(Convert.ToInt32(LabelId.Text));
+                if (existingTeacher != null)
                 {
-                    db.Student.Remove(existingStudent);
+                    db.Teachers.Remove(existingTeacher);
                     db.SaveChanges();
 
                     Reset();
@@ -170,11 +166,20 @@ namespace Broadway.CodeFirst
 
         private void LoadClass()
         {
-            var data = db.Classes.ToDictionary(p => p.Id.ToString(), p => p.Name);
+            var data = db.Classes.Where(p => p.ClassTeacher.Count == 0).ToDictionary(p => p.Id.ToString(), p => p.Name);
 
             BoxClass.DataSource = new BindingSource(data, null);
             BoxClass.DisplayMember = "Value";
             BoxClass.ValueMember = "Key";
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+        }
+
+        private void Teacher_Load(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

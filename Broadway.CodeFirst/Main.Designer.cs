@@ -34,6 +34,8 @@ namespace Broadway.CodeFirst
             this.manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.classToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.teacherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +44,8 @@ namespace Broadway.CodeFirst
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.studentToolStripMenuItem,
-            this.classToolStripMenuItem});
+            this.classToolStripMenuItem,
+            this.teacherToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1055, 28);
@@ -60,7 +63,7 @@ namespace Broadway.CodeFirst
             // manageToolStripMenuItem
             // 
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            this.manageToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.manageToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
             this.manageToolStripMenuItem.Text = "Manage";
             this.manageToolStripMenuItem.Click += new System.EventHandler(this.manageToolStripMenuItem_Click);
             // 
@@ -79,6 +82,21 @@ namespace Broadway.CodeFirst
             this.manageToolStripMenuItem1.Text = "Manage";
             this.manageToolStripMenuItem1.Click += new System.EventHandler(this.manageToolStripMenuItem1_Click);
             // 
+            // teacherToolStripMenuItem
+            // 
+            this.teacherToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.manageToolStripMenuItem2});
+            this.teacherToolStripMenuItem.Name = "teacherToolStripMenuItem";
+            this.teacherToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
+            this.teacherToolStripMenuItem.Text = "Teacher";
+            // 
+            // manageToolStripMenuItem2
+            // 
+            this.manageToolStripMenuItem2.Name = "manageToolStripMenuItem2";
+            this.manageToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.manageToolStripMenuItem2.Text = "Manage";
+            this.manageToolStripMenuItem2.Click += new System.EventHandler(this.manageToolStripMenuItem2_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -86,7 +104,7 @@ namespace Broadway.CodeFirst
             this.ClientSize = new System.Drawing.Size(1055, 558);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Main";
             this.Text = "Main";
             this.menuStrip1.ResumeLayout(false);
@@ -102,6 +120,8 @@ namespace Broadway.CodeFirst
         private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem classToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem teacherToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem2;
     }
 }
 

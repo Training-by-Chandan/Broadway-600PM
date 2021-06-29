@@ -35,7 +35,7 @@ namespace Broadway.CodeFirst
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1118, 565);
+            this.ClientSize = new System.Drawing.Size(1293, 529);
             this.Name = "ClassForm";
             this.Text = "ClassForm";
             this.ResumeLayout(false);

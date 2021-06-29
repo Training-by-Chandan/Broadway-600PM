@@ -7,13 +7,13 @@ namespace Broadway.CodeFirst.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class sudentTabe : IMigrationMetadata
+    public sealed partial class initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(sudentTabe));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "202106211321360_sudentTabe"; }
+            get { return "202106291329138_initial"; }
         }
         
         string IMigrationMetadata.Source

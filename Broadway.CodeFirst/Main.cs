@@ -32,5 +32,12 @@ namespace Broadway.CodeFirst
             f.MdiParent = this;
             f.Show();
         }
+
+        private void manageToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Teacher t = new Teacher();
+            t.MdiParent = this;
+            t.Show();
+        }
     }
 }
