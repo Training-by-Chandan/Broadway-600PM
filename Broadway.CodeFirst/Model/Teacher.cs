@@ -17,5 +17,10 @@ namespace Broadway.CodeFirst.Model
 
         [ForeignKey("ClassId")]
         public virtual Classes Classes { get; set; }
+
+        public int? UserId { get; set; }
+
+        [ForeignKey("UserId")]
+        public virtual User TeacherUser { get; set; }
     }
 }

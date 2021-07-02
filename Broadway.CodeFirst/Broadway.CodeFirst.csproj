@@ -57,51 +57,89 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassForm.cs">
+    <Compile Include="UI\Admin\ClassForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ClassForm.Designer.cs">
+    <Compile Include="UI\Admin\ClassForm.Designer.cs">
       <DependentUpon>ClassForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\DefaultContext.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="UI\Admin\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="UI\Admin\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main.cs">
+    <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Admin\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Admin\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202106291329138_initial.cs" />
     <Compile Include="Migrations\202106291329138_initial.designer.cs">
       <DependentUpon>202106291329138_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107021120322_userAdded.cs" />
+    <Compile Include="Migrations\202107021120322_userAdded.designer.cs">
+      <DependentUpon>202107021120322_userAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107021122076_updatedModel.cs" />
+    <Compile Include="Migrations\202107021122076_updatedModel.designer.cs">
+      <DependentUpon>202107021122076_updatedModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Student.cs" />
     <Compile Include="Model\Teacher.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Teacher.cs">
+    <Compile Include="Service\UserService.cs" />
+    <Compile Include="UI\Student\StudentMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Teacher.Designer.cs">
+    <Compile Include="UI\Student\StudentMain.Designer.cs">
+      <DependentUpon>StudentMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Admin\Teacher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Admin\Teacher.Designer.cs">
       <DependentUpon>Teacher.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ClassForm.resx">
+    <Compile Include="UI\Teacher\TeacherMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Teacher\TeacherMain.Designer.cs">
+      <DependentUpon>TeacherMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\LoginRequestViewModel.cs" />
+    <EmbeddedResource Include="UI\Admin\ClassForm.resx">
       <DependentUpon>ClassForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="UI\Admin\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Admin\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106291329138_initial.resx">
       <DependentUpon>202106291329138_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107021120322_userAdded.resx">
+      <DependentUpon>202107021120322_userAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107021122076_updatedModel.resx">
+      <DependentUpon>202107021122076_updatedModel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -112,8 +150,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Teacher.resx">
+    <EmbeddedResource Include="UI\Student\StudentMain.resx">
+      <DependentUpon>StudentMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Admin\Teacher.resx">
       <DependentUpon>Teacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Teacher\TeacherMain.resx">
+      <DependentUpon>TeacherMain.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
