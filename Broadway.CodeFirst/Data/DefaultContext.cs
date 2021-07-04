@@ -18,6 +18,7 @@ namespace Broadway.CodeFirst.Data
         public DbSet<Model.Teacher> Teachers { get; set; }
         public DbSet<Classes> Classes { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

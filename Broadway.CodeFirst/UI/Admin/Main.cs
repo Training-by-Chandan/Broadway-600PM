@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Broadway.CodeFirst.UI.Admin;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,6 +39,13 @@ namespace Broadway.CodeFirst
             Teacher t = new Teacher();
             t.MdiParent = this;
             t.Show();
+        }
+
+        private void manageToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            SubjectForm sf = new SubjectForm();
+            sf.MdiParent = this;
+            sf.Show();
         }
     }
 }

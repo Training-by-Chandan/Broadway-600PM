@@ -36,6 +36,8 @@ namespace Broadway.CodeFirst
             this.manageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.teacherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.subjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,10 +47,12 @@ namespace Broadway.CodeFirst
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.studentToolStripMenuItem,
             this.classToolStripMenuItem,
-            this.teacherToolStripMenuItem});
+            this.teacherToolStripMenuItem,
+            this.subjectToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1055, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(791, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -57,13 +61,13 @@ namespace Broadway.CodeFirst
             this.studentToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.manageToolStripMenuItem});
             this.studentToolStripMenuItem.Name = "studentToolStripMenuItem";
-            this.studentToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
+            this.studentToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.studentToolStripMenuItem.Text = "Student";
             // 
             // manageToolStripMenuItem
             // 
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            this.manageToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.manageToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.manageToolStripMenuItem.Text = "Manage";
             this.manageToolStripMenuItem.Click += new System.EventHandler(this.manageToolStripMenuItem_Click);
             // 
@@ -72,13 +76,13 @@ namespace Broadway.CodeFirst
             this.classToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.manageToolStripMenuItem1});
             this.classToolStripMenuItem.Name = "classToolStripMenuItem";
-            this.classToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
+            this.classToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.classToolStripMenuItem.Text = "Class ";
             // 
             // manageToolStripMenuItem1
             // 
             this.manageToolStripMenuItem1.Name = "manageToolStripMenuItem1";
-            this.manageToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.manageToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
             this.manageToolStripMenuItem1.Text = "Manage";
             this.manageToolStripMenuItem1.Click += new System.EventHandler(this.manageToolStripMenuItem1_Click);
             // 
@@ -87,24 +91,38 @@ namespace Broadway.CodeFirst
             this.teacherToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.manageToolStripMenuItem2});
             this.teacherToolStripMenuItem.Name = "teacherToolStripMenuItem";
-            this.teacherToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
+            this.teacherToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.teacherToolStripMenuItem.Text = "Teacher";
             // 
             // manageToolStripMenuItem2
             // 
             this.manageToolStripMenuItem2.Name = "manageToolStripMenuItem2";
-            this.manageToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.manageToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.manageToolStripMenuItem2.Text = "Manage";
             this.manageToolStripMenuItem2.Click += new System.EventHandler(this.manageToolStripMenuItem2_Click);
             // 
+            // subjectToolStripMenuItem
+            // 
+            this.subjectToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.manageToolStripMenuItem3});
+            this.subjectToolStripMenuItem.Name = "subjectToolStripMenuItem";
+            this.subjectToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.subjectToolStripMenuItem.Text = "Subject";
+            // 
+            // manageToolStripMenuItem3
+            // 
+            this.manageToolStripMenuItem3.Name = "manageToolStripMenuItem3";
+            this.manageToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.manageToolStripMenuItem3.Text = "Manage";
+            this.manageToolStripMenuItem3.Click += new System.EventHandler(this.manageToolStripMenuItem3_Click);
+            // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1055, 558);
+            this.ClientSize = new System.Drawing.Size(791, 453);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Main";
             this.Text = "Main";
             this.menuStrip1.ResumeLayout(false);
@@ -122,6 +140,8 @@ namespace Broadway.CodeFirst
         private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem teacherToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem subjectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem3;
     }
 }
 
