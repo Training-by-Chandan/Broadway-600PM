@@ -18,14 +18,4 @@ namespace Broadway.CodeFirst.ViewModel
         public int UserId { get; set; }
         public UserType Type { get; set; }
     }
-
-    public class RequestViewModel
-    {
-    }
-
-    public class ResponseViewModel
-    {
-        public bool Status { get; set; } = false;
-        public string Message { get; set; }
-    }
 }

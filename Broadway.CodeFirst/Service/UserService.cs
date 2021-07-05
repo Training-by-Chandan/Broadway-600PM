@@ -46,5 +46,53 @@ namespace Broadway.CodeFirst.Service
 
             return result;
         }
+
+        public static StudentUserCreateResponseViewModel CreateStudentUser(StudentUserCreateRequestViewModel model)
+        {
+            var res = new StudentUserCreateResponseViewModel();
+            try
+            {
+                var user = new User()
+                {
+                    Email = model.Email,
+                    Username = model.Username,
+                    PlainPassword = model.Password,
+                    Type = UserType.Student
+                };
+
+                db.Users.Add(user);
+                db.SaveChanges();
+
+                var student = new Student()
+                {
+                    Address = model.Address,
+                    ClassId = model.ClassId,
+                    Name = model.Name,
+                    UserId = user.Id
+                };
+                db.Student.Add(student);
+                db.SaveChanges();
+                res.Status = true;
+                res.Message = "User and student created successfully";
+            }
+            catch (Exception ex)
+            {
+                res.Message = ex.Message;
+            }
+
+            return res;
+        }
+
+        public static List<AdminStudentListViewModel> ListAllStudentsInDashboard()
+        {
+            var data = db.Student.Where(p => !p.IsDeleted).Select(p => new AdminStudentListViewModel
+            {
+                StudentId = p.Id,
+                StudentEmail = p.StudentUser == null ? "" : p.StudentUser.Email,
+                StudentName = p.Name,
+                StudentUserName = p.StudentUser == null ? "" : p.StudentUser.Username
+            });
+            return data.ToList();
+        }
     }
 }

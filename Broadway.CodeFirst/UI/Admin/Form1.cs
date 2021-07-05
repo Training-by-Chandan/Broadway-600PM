@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Broadway.CodeFirst.Service;
 
 namespace Broadway.CodeFirst
 {
@@ -34,7 +35,6 @@ namespace Broadway.CodeFirst
                 var row = selected[0];
                 TextName.Text = row.Cells["Name"].Value.ToString();
                 TextAddress.Text = row.Cells["Address"].Value.ToString();
-                TextEmail.Text = row.Cells["Email"].Value.ToString();
 
                 LabelId.Text = row.Cells["Id"].Value.ToString();
                 var student = db.Student.FirstOrDefault(p => p.Id.ToString() == LabelId.Text);
@@ -59,7 +59,7 @@ namespace Broadway.CodeFirst
 
         private void LoadData()
         {
-            GridStudent.DataSource = db.Student.ToList();
+            GridStudent.DataSource = UserService.ListAllStudentsInDashboard();
             GridStudent.Refresh();
 
             LoadClass();
@@ -67,21 +67,29 @@ namespace Broadway.CodeFirst
 
         private void Insert()
         {
-            if (Valid())
+            if (Valid() && TextPassword.Text == TextConfirmPassword.Text)
             {
-                var student = new Model.Student()
+                var student = new ViewModel.StudentUserCreateRequestViewModel()
                 {
                     Name = TextName.Text,
                     Address = TextAddress.Text,
                     Email = TextEmail.Text,
+                    Username = TextUserName.Text,
+                    Password = TextPassword.Text,
+
                     ClassId = Convert.ToInt32(((KeyValuePair<string, string>)BoxClass.SelectedItem).Key)
                 };
 
-                db.Student.Add(student);
-                db.SaveChanges();
-
-                Reset();
-                LoadData();
+                var result = UserService.CreateStudentUser(student);
+                if (result.Status)
+                {
+                    Reset();
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show(result.Message);
+                }
             }
             else
             {
@@ -93,7 +101,6 @@ namespace Broadway.CodeFirst
         {
             TextName.Text = string.Empty;
             TextAddress.Text = string.Empty;
-            TextEmail.Text = string.Empty;
             LabelId.Text = string.Empty;
             LabelClassTeacher.Text = string.Empty;
 
@@ -105,7 +112,7 @@ namespace Broadway.CodeFirst
         private bool Valid()
         {
             var res = false;
-            if (!string.IsNullOrWhiteSpace(TextName.Text) && !string.IsNullOrWhiteSpace(TextEmail.Text))
+            if (!string.IsNullOrWhiteSpace(TextName.Text))
             {
                 res = true;
             }
@@ -125,7 +132,7 @@ namespace Broadway.CodeFirst
             {
                 existingStudent.Name = TextName.Text;
                 existingStudent.Address = TextAddress.Text;
-                existingStudent.Email = TextEmail.Text;
+
                 existingStudent.ClassId = Convert.ToInt32(((KeyValuePair<string, string>)BoxClass.SelectedItem).Key);
 
                 db.Entry(existingStudent).State = System.Data.Entity.EntityState.Modified;

@@ -37,7 +37,6 @@ namespace Broadway.CodeFirst
                 var row = selected[0];
                 TextName.Text = row.Cells["Name"].Value.ToString();
 
-                TextEmail.Text = row.Cells["Email"].Value.ToString();
                 LabelId.Text = row.Cells["Id"].Value.ToString();
 
                 ButtonCreate.Visible = false;
@@ -70,7 +69,6 @@ namespace Broadway.CodeFirst
                 {
                     Name = TextName.Text,
 
-                    Email = TextEmail.Text,
                     ClassId = Convert.ToInt32(((KeyValuePair<string, string>)BoxClass.SelectedItem).Key)
                 };
 
@@ -90,7 +88,6 @@ namespace Broadway.CodeFirst
         {
             TextName.Text = string.Empty;
 
-            TextEmail.Text = string.Empty;
             LabelId.Text = string.Empty;
 
             ButtonCreate.Visible = true;
@@ -101,7 +98,7 @@ namespace Broadway.CodeFirst
         private bool Valid()
         {
             var res = false;
-            if (!string.IsNullOrWhiteSpace(TextName.Text) && !string.IsNullOrWhiteSpace(TextEmail.Text))
+            if (!string.IsNullOrWhiteSpace(TextName.Text))
             {
                 res = true;
             }
@@ -121,7 +118,6 @@ namespace Broadway.CodeFirst
             {
                 existingTeacher.Name = TextName.Text;
 
-                existingTeacher.Email = TextEmail.Text;
                 existingTeacher.ClassId = Convert.ToInt32(((KeyValuePair<string, string>)BoxClass.SelectedItem).Key);
 
                 db.Entry(existingTeacher).State = System.Data.Entity.EntityState.Modified;

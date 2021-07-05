@@ -61,6 +61,14 @@
     <Compile Include="Migrations\202107041136532_SubjectAdded.designer.cs">
       <DependentUpon>202107041136532_SubjectAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107051109499_emailAddedinUser.cs" />
+    <Compile Include="Migrations\202107051109499_emailAddedinUser.designer.cs">
+      <DependentUpon>202107051109499_emailAddedinUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107051151206_SoftDeleteStuden.cs" />
+    <Compile Include="Migrations\202107051151206_SoftDeleteStuden.designer.cs">
+      <DependentUpon>202107051151206_SoftDeleteStuden.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Subject.cs" />
     <Compile Include="UI\Admin\ClassForm.cs">
       <SubType>Form</SubType>
@@ -130,9 +138,18 @@
     <Compile Include="UI\Teacher\TeacherMain.Designer.cs">
       <DependentUpon>TeacherMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AdminStudentListViewModel.cs" />
     <Compile Include="ViewModel\LoginRequestViewModel.cs" />
+    <Compile Include="ViewModel\RequestViewModel.cs" />
+    <Compile Include="ViewModel\StudentUserCreateViewModel.cs" />
     <EmbeddedResource Include="Migrations\202107041136532_SubjectAdded.resx">
       <DependentUpon>202107041136532_SubjectAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107051109499_emailAddedinUser.resx">
+      <DependentUpon>202107051109499_emailAddedinUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107051151206_SoftDeleteStuden.resx">
+      <DependentUpon>202107051151206_SoftDeleteStuden.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Admin\ClassForm.resx">
       <DependentUpon>ClassForm.cs</DependentUpon>
