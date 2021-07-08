@@ -23,7 +23,7 @@
             var User = new User()
             {
                 Username = "Admin",
-                PlainPassword = "Admin@123",
+                HasedPassword = Common.MD5Hash.Create("Admin@123"),
                 Type = UserType.Admin
             };
             var existingAdmin = db.Users.FirstOrDefault(p => p.Username == "Admin");
@@ -36,7 +36,7 @@
             var student = new User()
             {
                 Username = "Student",
-                PlainPassword = "Student@123",
+                HasedPassword = Common.MD5Hash.Create("Student@123"),
                 Type = UserType.Student
             };
             var existingStudent = db.Users.FirstOrDefault(p => p.Username == "Student");
@@ -49,7 +49,7 @@
             var teacher = new User()
             {
                 Username = "Teacher",
-                PlainPassword = "Teacher@123",
+                HasedPassword = Common.MD5Hash.Create("Teacher@123"),
                 Type = UserType.Teacher
             };
             var existingTeacher = db.Users.FirstOrDefault(p => p.Username == "Teacher");
@@ -58,6 +58,15 @@
                 db.Users.Add(teacher);
                 db.SaveChanges();
             }
+
+            //var allUsersWithoutHashedPwd = db.Users.Where(p => p.HasedPassword == null || p.HasedPassword == "").ToList();
+
+            //foreach (var item in allUsersWithoutHashedPwd)
+            //{
+            //    item.HasedPassword = Common.MD5Hash.Create(item.PlainPassword);
+            //    db.Entry(item).State = EntityState.Modified;
+            //    db.SaveChanges();
+            //}
         }
     }
 }

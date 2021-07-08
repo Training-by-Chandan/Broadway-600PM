@@ -47,5 +47,12 @@ namespace Broadway.CodeFirst
             sf.MdiParent = this;
             sf.Show();
         }
+
+        private void forgotPasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ForgotPasswordForm fpf = new ForgotPasswordForm();
+            fpf.MdiParent = this;
+            fpf.Show();
+        }
     }
 }

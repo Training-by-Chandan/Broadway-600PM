@@ -4,6 +4,8 @@ using Broadway.CodeFirst.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,7 +28,7 @@ namespace Broadway.CodeFirst.Service
                 }
                 else
                 {
-                    if (existingUser.PlainPassword == model.Password)
+                    if (existingUser.HasedPassword == Common.MD5Hash.Create(model.Password))
                     {
                         result.Status = true;
                         result.Message = "Loggedin successfully";
@@ -56,7 +58,7 @@ namespace Broadway.CodeFirst.Service
                 {
                     Email = model.Email,
                     Username = model.Username,
-                    PlainPassword = model.Password,
+                    HasedPassword = Common.MD5Hash.Create(model.Password),
                     Type = UserType.Student
                 };
 
@@ -93,6 +95,66 @@ namespace Broadway.CodeFirst.Service
                 StudentUserName = p.StudentUser == null ? "" : p.StudentUser.Username
             });
             return data.ToList();
+        }
+
+        public static ForgotPasswordResponseViewModel ForgotPassword(ForgotPasswordRequestViewModel model)
+        {
+            var res = new ForgotPasswordResponseViewModel();
+
+            try
+            {
+                var user = db.Users.FirstOrDefault(p => p.Username == model.Username);
+                if (user != null)
+                {
+                    var password = GenerateRandomPassword();
+                    user.HasedPassword = Common.MD5Hash.Create(password);
+                    db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+
+                    SendEmail(user.Email, user.Username, password);
+                    res.Status = true;
+                    res.Message = "Password cahnged and email is sent";
+                }
+                else
+                {
+                    res.Message = "User not found";
+                }
+            }
+            catch (Exception ex)
+            {
+                res.Message = ex.Message;
+            }
+
+            return res;
+        }
+
+        private static void SendEmail(string email, string username, string password)
+        {
+            var receiver = new MailAddress(email, username);
+            var sender = new MailAddress("gchandaniw@gmail.com", "Chandan Gupta Bhagat");
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = true,
+                Credentials = new NetworkCredential("gchandaniw@gmail.com", "dvsjyhawrgisaymr")
+            };
+
+            var msg = new MailMessage(sender, receiver)
+            {
+                Subject = "Password changed as per Requested",
+                Body = $"Hi {username}! your new password is {password}.\nPlease login to continue.",
+            };
+
+            smtp.Send(msg);
+        }
+
+        private static string GenerateRandomPassword()
+        {
+            return "Test@123";
         }
     }
 }

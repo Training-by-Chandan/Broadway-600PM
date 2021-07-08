@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\MD5Hash.cs" />
     <Compile Include="Migrations\202107041136532_SubjectAdded.cs" />
     <Compile Include="Migrations\202107041136532_SubjectAdded.designer.cs">
       <DependentUpon>202107041136532_SubjectAdded.cs</DependentUpon>
@@ -69,6 +70,14 @@
     <Compile Include="Migrations\202107051151206_SoftDeleteStuden.designer.cs">
       <DependentUpon>202107051151206_SoftDeleteStuden.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107081148357_hashedPwd.cs" />
+    <Compile Include="Migrations\202107081148357_hashedPwd.designer.cs">
+      <DependentUpon>202107081148357_hashedPwd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107081200385_removedPassword.cs" />
+    <Compile Include="Migrations\202107081200385_removedPassword.designer.cs">
+      <DependentUpon>202107081200385_removedPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Subject.cs" />
     <Compile Include="UI\Admin\ClassForm.cs">
       <SubType>Form</SubType>
@@ -77,6 +86,12 @@
       <DependentUpon>ClassForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\DefaultContext.cs" />
+    <Compile Include="UI\Admin\ForgotPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Admin\ForgotPasswordForm.Designer.cs">
+      <DependentUpon>ForgotPasswordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Admin\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +154,7 @@
       <DependentUpon>TeacherMain.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AdminStudentListViewModel.cs" />
+    <Compile Include="ViewModel\ForgotPasswordRequestViewModel.cs" />
     <Compile Include="ViewModel\LoginRequestViewModel.cs" />
     <Compile Include="ViewModel\RequestViewModel.cs" />
     <Compile Include="ViewModel\StudentUserCreateViewModel.cs" />
@@ -151,8 +167,17 @@
     <EmbeddedResource Include="Migrations\202107051151206_SoftDeleteStuden.resx">
       <DependentUpon>202107051151206_SoftDeleteStuden.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107081148357_hashedPwd.resx">
+      <DependentUpon>202107081148357_hashedPwd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107081200385_removedPassword.resx">
+      <DependentUpon>202107081200385_removedPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Admin\ClassForm.resx">
       <DependentUpon>ClassForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Admin\ForgotPasswordForm.resx">
+      <DependentUpon>ForgotPasswordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Admin\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

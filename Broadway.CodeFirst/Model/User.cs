@@ -10,9 +10,14 @@ namespace Broadway.CodeFirst.Model
     {
         public int Id { get; set; }
         public string Username { get; set; }
-        public string PlainPassword { get; set; }
+
+        //[Obsolete("Deprecated", true)]
+        //public string PlainPassword { get; set; }
         public string Email { get; set; }
+
         public UserType Type { get; set; }
+
+        public string HasedPassword { get; set; }
     }
 
     public enum UserType

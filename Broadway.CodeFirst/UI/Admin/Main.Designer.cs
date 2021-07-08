@@ -38,6 +38,8 @@ namespace Broadway.CodeFirst
             this.manageToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.subjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.forgotPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +50,8 @@ namespace Broadway.CodeFirst
             this.studentToolStripMenuItem,
             this.classToolStripMenuItem,
             this.teacherToolStripMenuItem,
-            this.subjectToolStripMenuItem});
+            this.subjectToolStripMenuItem,
+            this.userToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -97,7 +100,7 @@ namespace Broadway.CodeFirst
             // manageToolStripMenuItem2
             // 
             this.manageToolStripMenuItem2.Name = "manageToolStripMenuItem2";
-            this.manageToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.manageToolStripMenuItem2.Size = new System.Drawing.Size(117, 22);
             this.manageToolStripMenuItem2.Text = "Manage";
             this.manageToolStripMenuItem2.Click += new System.EventHandler(this.manageToolStripMenuItem2_Click);
             // 
@@ -112,9 +115,24 @@ namespace Broadway.CodeFirst
             // manageToolStripMenuItem3
             // 
             this.manageToolStripMenuItem3.Name = "manageToolStripMenuItem3";
-            this.manageToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.manageToolStripMenuItem3.Size = new System.Drawing.Size(117, 22);
             this.manageToolStripMenuItem3.Text = "Manage";
             this.manageToolStripMenuItem3.Click += new System.EventHandler(this.manageToolStripMenuItem3_Click);
+            // 
+            // userToolStripMenuItem
+            // 
+            this.userToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.forgotPasswordToolStripMenuItem});
+            this.userToolStripMenuItem.Name = "userToolStripMenuItem";
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
+            this.userToolStripMenuItem.Text = "User";
+            // 
+            // forgotPasswordToolStripMenuItem
+            // 
+            this.forgotPasswordToolStripMenuItem.Name = "forgotPasswordToolStripMenuItem";
+            this.forgotPasswordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.forgotPasswordToolStripMenuItem.Text = "Forgot Password";
+            this.forgotPasswordToolStripMenuItem.Click += new System.EventHandler(this.forgotPasswordToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -142,6 +160,8 @@ namespace Broadway.CodeFirst
         private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem subjectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem forgotPasswordToolStripMenuItem;
     }
 }
 
